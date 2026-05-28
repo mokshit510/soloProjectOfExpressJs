@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Dungeon Dice Duel</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__brand">
+        <h1>Dungeon Dice Duel</h1>
+        <p class="header-goal">
+          Create an account to track your dungeon runs.
+        </p>
+      </div>
+      <div class="header-actions">
+        <a class="header-link-btn" href="/">Home</a>
+        <a class="header-link-btn" href="/signin.html">Sign in</a>
+      </div>
+    </header>
+
+    <main class="auth-main">
+      <section class="auth-card" aria-labelledby="signup-title">
+        <h2 id="signup-title">Create your account</h2>
+        <form class="auth-form" id="signup-form" autocomplete="off">
+          <label for="signup-name">Full name</label>
+          <input id="signup-name" name="name" type="text" required />
+
+          <label for="signup-username">Username</label>
+          <input
+            id="signup-username"
+            name="username"
+            type="text"
+            pattern="^[a-zA-Z0-9_-]{1,20}$"
+            title="Use 1-20 letters, numbers, underscores, or hyphens."
+            required
+          />
+
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" required />
+
+          <button type="submit">Create account</button>
+        </form>
+        <p id="error-message" class="auth-helper"></p>
+        <p class="auth-helper">
+          Already have an account? <a href="/signin.html">Sign in</a>.
+        </p>
+      </section>
+    </main>
+    <script src="/signup.js" defer></script>
+  </body>
+</html>

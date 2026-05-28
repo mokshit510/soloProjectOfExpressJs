@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in | Dungeon Dice Duel</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__brand">
+        <h1>Dungeon Dice Duel</h1>
+        <p class="header-goal">
+          Sign in to continue your battles.
+        </p>
+      </div>
+      <div class="header-actions">
+        <a class="header-link-btn" href="/">Home</a>
+        <a class="header-link-btn" href="/signup.html">Register</a>
+      </div>
+    </header>
+
+    <main class="auth-main">
+      <section class="auth-card" aria-labelledby="signin-title">
+        <h2 id="signin-title">Welcome back</h2>
+        <form id="signin-form" class="auth-form" autocomplete="off">
+          <label for="signin-username">Username</label>
+          <input
+            id="signin-username"
+            name="username"
+            type="text"
+            pattern="^[a-zA-Z0-9_-]{1,20}$"
+            title="Use 1-20 letters, numbers, underscores, or hyphens."
+            required
+          />
+
+          <label for="signin-password">Password</label>
+          <input id="signin-password" name="password" type="password" required />
+
+          <button type="submit">Sign in</button>
+        </form>
+        <p id="error-message" class="auth-helper"></p>
+        <p class="auth-helper">
+          No account yet? <a href="/signup.html">Create one</a>.
+        </p>
+      </section>
+    </main>
+    <script src="/signin.js" defer></script>
+  </body>
+</html>

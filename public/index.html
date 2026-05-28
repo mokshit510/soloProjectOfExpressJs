@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dungeon Dice Duel</title>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__brand">
+        <div class="site-header__title-row">
+          <h1>Dungeon Dice Duel</h1>
+        </div>
+        <p id="greeting" class="header-status-message"></p>
+        <p id="header-choose-message" class="header-status-message">Choose your hero below</p>
+      </div>
+      <div class="header-actions">
+        <button id="reset-btn" type="button">Reset dungeon</button>
+        <div class="rules-wrap">
+          <details class="rules-dropdown">
+            <summary class="rules-summary">Menu</summary>
+            <div class="rules-panel">
+              <nav class="header-dropdown-links" aria-label="Header menu links">
+                <a class="header-dropdown-btn" id="signup" href="/signup.html">Register</a>
+                <a class="header-dropdown-btn" id="login" href="/signin.html">Sign in</a>
+                <button class="header-dropdown-btn" id="logout-btn" type="button" style="display: none">
+                  Logout
+                </button>
+              </nav>
+              <h3 class="rules-heading" id="goal-label">Goal</h3>
+              <p id="goal-text">Reduce opponent HP to 0 before yours reaches 0.</p>
+              <h3 class="rules-heading">Dice and powers</h3>
+              <p>
+                Each hero has <strong>Attack Power</strong>, <strong>Defense Power</strong>, and
+                <strong>Max HP</strong>. Every round the server rolls four independent dice:
+              </p>
+              <ul class="rules-list">
+                <li>
+                  <strong>Attack roll</strong> for each side: a random integer from
+                  <strong>1</strong> up to and including that hero's Attack Power.
+                </li>
+                <li>
+                  <strong>Defense roll</strong> for each side: a random integer from
+                  <strong>1</strong> up to and including that hero's Defense Power.
+                </li>
+              </ul>
+              <h3 class="rules-heading">Damage</h3>
+              <p>Damage is never negative; if the calculation goes below zero, it counts as <strong>0</strong>.</p>
+              <ul class="rules-list">
+                <li>
+                  <strong>Damage to the opponent</strong> =
+                  your attack roll - opponent's defense roll.
+                </li>
+                <li>
+                  <strong>Damage to you</strong> =
+                  opponent's attack roll - your defense roll.
+                </li>
+              </ul>
+              <p>
+                Both amounts are applied in the <strong>same</strong> round. HP cannot go below 0.
+                When one side reaches 0 HP, the battle ends (if both reach 0 in the same round, it is a
+                draw).
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout" id="game-layout">
+      <section class="status-panel status-panel--collapsed" id="status-panel">
+        <div class="status-messages">
+          <p id="status-message">Choose your hero below</p>
+          <p id="next-step-message" class="next-step-message"></p>
+        </div>
+        <div class="status-actions">
+          <button id="roll-panel-btn" type="button">Roll Round</button>
+        </div>
+        <section class="battle-arena" aria-label="Battle arena">
+          <div class="battle-slot" id="player-slot">
+            <p class="battle-label">You</p>
+            <div class="battle-card" data-empty="true">
+              <p class="battle-empty">Select a hero below</p>
+            </div>
+          </div>
+          <div class="battle-vs" aria-hidden="true">VS</div>
+          <div class="battle-slot" id="computer-slot">
+            <p class="battle-label">Opponent</p>
+            <div class="battle-card" data-empty="true">
+              <p class="battle-empty"></p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="cards-grid" id="heroes-grid" aria-live="polite"></section>
+    </main>
+
+    <template id="hero-template">
+      <article class="monster-card">
+        <div class="monster-image-wrap">
+          <img class="monster-image" src="" alt="" />
+          <span class="monster-power-badge monster-power-badge--defense">D<span class="stat-defense-power"></span></span>
+          <span class="monster-power-badge monster-power-badge--attack">A<span class="stat-attack-power"></span></span>
+        </div>
+        <div class="card-content">
+          <h2 class="monster-name"></h2>
+          <p class="monster-hp"><strong>HP</strong> <span class="stat-max-hp"></span></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="/index.js" type="module"></script>
+  </body>
+</html>
