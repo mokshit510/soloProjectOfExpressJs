@@ -1,6 +1,9 @@
+import express from 'express'
 import { createDiceGameEngine } from '../domain/diceGameEngine.js'
 
-const engine = createDiceGameEngine();
+export const diceGameRoutes = express.Router()
+
+diceGameRoutes.get('/heroes',createDiceGameEngine)
 
 
 
